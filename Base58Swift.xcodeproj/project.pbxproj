@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		770DFBFF2214CD2F00E8E70A /* Base58Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770DFBF52214CD2F00E8E70A /* Base58Swift.framework */; };
-		770DFC042214CD2F00E8E70A /* Base58SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770DFC032214CD2F00E8E70A /* Base58SwiftTests.swift */; };
-		770DFC062214CD2F00E8E70A /* Base58Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = 770DFBF82214CD2F00E8E70A /* Base58Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		770DFC102214CE0B00E8E70A /* Base58.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770DFC0F2214CE0B00E8E70A /* Base58.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,11 +23,8 @@
 
 /* Begin PBXFileReference section */
 		770DFBF52214CD2F00E8E70A /* Base58Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Base58Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		770DFBF82214CD2F00E8E70A /* Base58Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Base58Swift.h; sourceTree = "<group>"; };
-		770DFBF92214CD2F00E8E70A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		770DFBFE2214CD2F00E8E70A /* Base58SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Base58SwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		770DFC032214CD2F00E8E70A /* Base58SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base58SwiftTests.swift; sourceTree = "<group>"; };
-		770DFC052214CD2F00E8E70A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		770DFC0F2214CE0B00E8E70A /* Base58.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Base58.swift; path = Base58/Base58.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +49,7 @@
 		770DFBEB2214CD2F00E8E70A = {
 			isa = PBXGroup;
 			children = (
-				770DFBF72214CD2F00E8E70A /* Base58Swift */,
-				770DFC022214CD2F00E8E70A /* Base58SwiftTests */,
+				770DFC0F2214CE0B00E8E70A /* Base58.swift */,
 				770DFBF62214CD2F00E8E70A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,24 +63,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		770DFBF72214CD2F00E8E70A /* Base58Swift */ = {
-			isa = PBXGroup;
-			children = (
-				770DFBF82214CD2F00E8E70A /* Base58Swift.h */,
-				770DFBF92214CD2F00E8E70A /* Info.plist */,
-			);
-			path = Base58Swift;
-			sourceTree = "<group>";
-		};
-		770DFC022214CD2F00E8E70A /* Base58SwiftTests */ = {
-			isa = PBXGroup;
-			children = (
-				770DFC032214CD2F00E8E70A /* Base58SwiftTests.swift */,
-				770DFC052214CD2F00E8E70A /* Info.plist */,
-			);
-			path = Base58SwiftTests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -93,7 +70,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				770DFC062214CD2F00E8E70A /* Base58Swift.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +124,7 @@
 				TargetAttributes = {
 					770DFBF42214CD2F00E8E70A = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					770DFBFD2214CD2F00E8E70A = {
 						CreatedOnToolsVersion = 10.1;
@@ -194,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				770DFC102214CE0B00E8E70A /* Base58.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +179,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				770DFC042214CD2F00E8E70A /* Base58SwiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +318,7 @@
 		770DFC0A2214CD2F00E8E70A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -358,6 +336,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.keefertaylor.Base58Swift;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -366,6 +345,7 @@
 		770DFC0B2214CD2F00E8E70A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -391,6 +371,7 @@
 		770DFC0D2214CD2F00E8E70A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6F6VXZUKN5;
 				INFOPLIST_FILE = Base58SwiftTests/Info.plist;
@@ -409,6 +390,7 @@
 		770DFC0E2214CD2F00E8E70A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6F6VXZUKN5;
 				INFOPLIST_FILE = Base58SwiftTests/Info.plist;
