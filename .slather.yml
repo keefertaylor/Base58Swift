@@ -1,0 +1,5 @@
+# .slather.yml
+
+coverage_service: cobertura_xml
+xcodeproj: Base58Swift.xcodeproj
+scheme: Base58Swift.xcodeproj
