@@ -39,7 +39,17 @@ github "keefertaylor/Base58Swift"
 
 ## Usage
 
-TODO: Write this section.
+Base58Swift provides a static utility class, `Base58`, which provides encoding and decoding functions.
+
+```swift
+let bytes: [UInt8] = [255, 254, 253, 252]
+
+let encodedString = Base58.encode(Data(bytes))!
+let decodedBytes = [UInt8](Base58.decode(encodedString)!)
+
+print(encodedString) // 7YXVWT
+print(decodedBytes)  // [255, 254, 253, 252]
+```
 
 ## Contributing
 
