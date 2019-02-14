@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version      = "1.0.0"
   s.summary      = "A pure swift implementation of base58 string encoding and decoding."
   s.description  = <<-DESC
-  A pure swift implementation of base58 string encoding and decoding.
+  A pure swift implementation of base58 string encoding and decoding. Based off of https://github.com/jbenet/go-base58.
                    DESC
 
   s.homepage      = "https://github.com/keefertaylor/Base58Swift"
