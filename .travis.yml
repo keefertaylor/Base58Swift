@@ -17,17 +17,16 @@ before_deploy:
 after_deploy:
 - pod trunk push --skip-import-validation --skip-tests --allow-warnings
 script:
-- set -o pipefail && xcodebuild test -scheme Base58Swift -destination 'platform=iOS Simulator,name=iPhone
-  XS,OS=12.0' ONLY_ACTIVE_ARCH=YES | xcpretty
+- set -o pipefail && xcodebuild test -scheme Base58Swift -destination 'platform=iOS
+  Simulator,name=iPhone XS,OS=12.0' ONLY_ACTIVE_ARCH=YES | xcpretty
 after_success:
 - slather
 - bash <(curl -s https://codecov.io/bash)
 deploy:
   provider: releases
   api_key:
-    secure: md8YfrZO/5WKAPmiIInTk7oWtc/B5FmibnEfwXeCGiVa+0N6CtcJNdQYFmYCxEm7+JCPXBKakk2UFM0T1eOAKOvnwqkxy+xP1aAxvjAP+1hpt8OVGtkXdmemoXNdxoQq+qqGLtfVtr5cVdeL1sqnpfKOdUQeCZXYcy8LL3oOuMwh3jn9bZbctVYTs7L1UD/p8tEFTdfxLxropQ+u96mXb1kmVkqKwzU4Sro6D9opHaGW2aHIJF3CVVAELr/pICM14HwMCvqhpZ8q3z9FhIdFab9EaFGZE9c7w00q+2wUdl0uoQJ7oe2nCtCYJj6Hh7onRUyc81e/MepEdQHyD5jLGmKbPpPFdGM+BjtVUfdvPAzV5kAp88HuqBAn++BVm2cT4wtawsUFsC4lnfR+0vBAxFU69L7JhxT744bc+X58XS+UUBFcAJsYlDU579iZWP0xFzZHjy+2q8PzuB/2iqY1n3aeSkkrHt7meAlmepzQUdJIM3BqUfibW/fqL/A5uhSOCHeaH70r24CkBlaUlQcOWUv5V48j99cae9vlNE/PJ68cC94LVz1t7jDM98sU6dCs7vgkPkYI4QzBKbnqCRk0MdvdwwATadmhjOJKtmJxm8tDmPAf4Gp9tLzCuDaokCd2HJpWUotmHy1DkM6+xGX4i3s21aU0U81bgQgYJFV1BWk=
+    secure: MWmyQzv+FpXYJ6xapvcGv+TS0RI12uwQsFb0ncEMT6Aq4aGMrR6R2ZCdumB8rvaWk6wS5R4UtBF4f2EkHKuuVsn14A4ru9GJ7spupjFRDsHQQwP3s8NTBeSd6dMGb2KRa2ougEQtpbftiI7CqE5bVTBbOXsfekIwcTHm9m3Q3RhbayMNG4J42EdbCNLFicXo0ROYEMWfsmtKk+M2jboDw7E8UqiCgbqA75hRGOvqXqYXkd2dylgaoqGqXV1D994W5g+Iz2OJuswVXAxaFg4F0B0hFk9N52Xj2m0sxymfS7he/yiU/cOgxbzmMAh2mxwVDDQAg/uCVBCL1f8rjq/KAVyPsJYjvdDEADQ7oholCtwKj6QiLwuv7KOAnC4t9ud2qNjQaLIJD1jrtMxzHpCLpyoLMoZT0F7Ms5GwG/PC99Lo9QNpySX+qWLVZ0GOXLq6FF2bpF9SjJGVZiBFyyzXjJdNmAdfIE7daR4GqnMNTFjNm08nbGrFZWeVTN3MGo1i5No+s+Bc2yGIBhC4eGT8iW9sSixeR72nfpc718O00sIMAP69+r4YTTuvGL96i1Pn/fCMJNc2C18KRD8kv/tzpfCHSA66MIJ+OcDtnV93foYp6LfD4Ouyf5ZdTVw/65T9vtTRxeX+0uJJ8EY6UC9i19gDzSaowFMobGdH6e4fhF0=
   file: "$FRAMEWORK_NAME.framework.zip"
   skip_cleanup: true
   on:
     repo: keefertaylor/Base58Swift
-    tags: true
