@@ -28,6 +28,30 @@ public class Base58 {
   }
 
   /**
+   * Decode the given Base58Check encoded string to bytes.
+   * - Parameter input: A base58check encoded input string to decode.
+   * - Returns: Bytes representing the decoded input, or nil if decoding failed.
+   */
+  public static func base58CheckDecode(_ input: String) -> Data? {
+    guard let decodedChecksummedBytes = base58Decode(input) else {
+      return nil
+    }
+
+    let decodedChecksum = decodedChecksummedBytes.suffix(checksumLength)
+
+    let decodedBytes = decodedChecksummedBytes.prefix(upTo: decodedChecksummedBytes.count - checksumLength)
+    let calculatedChecksum = calculateChecksum([UInt8](decodedBytes))
+
+    guard decodedChecksum.elementsEqual(calculatedChecksum, by: { $0 == $1 }) else {
+      return nil
+    }
+
+    // TODONOT: Check checksum
+    // TODONOT: migrate everythign to arrays not data.
+    return decodedBytes
+  }
+
+  /**
    * Encode the given bytes to a Base58 encoded string.
    * - Parameter bytes: The bytes to encode.
    * - Returns: A base58 encoded string representing the given bytes, or nil if encoding failed.
@@ -53,7 +77,7 @@ public class Base58 {
    * - Parameter input: The base58 encoded input string to decode.
    * - Returns: Bytes representing the decoded input, or nil if decoding failed.
    */
-  public static func decode(_ input: String) -> Data? {
+  public static func base58Decode(_ input: String) -> Data? {
     var answer = zero
     var i = BigUInt(1)
     let byteString = [UInt8](input.utf8)

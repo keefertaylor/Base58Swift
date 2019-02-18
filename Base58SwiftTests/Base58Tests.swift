@@ -47,7 +47,7 @@ class Base58SwiftTests: XCTestCase {
 
   public func testDecodingForValidStrings() {
     for (decoded, encoded) in validStringDecodedToEncodedTuples {
-      guard let bytes = Base58.decode(encoded) else {
+      guard let bytes = Base58.base58Decode(encoded) else {
         XCTFail()
         return
       }
@@ -58,12 +58,13 @@ class Base58SwiftTests: XCTestCase {
 
   public func testDecodingForInvalidStrings() {
     for invalidString in invalidStrings {
-      let result = Base58.decode(invalidString)
+      let result = Base58.base58Decode(invalidString)
       XCTAssertNil(result)
     }
   }
 
   public func testBase58Encoding() {
+    // TODONOT: Refactor this to be global vars.
     let inputData: [UInt8] = [
       6, 161, 159, 136, 34, 110, 33, 238, 14, 79, 14, 218, 133, 13, 109, 40, 194, 236, 153, 44, 61, 157, 254
     ]
@@ -74,5 +75,20 @@ class Base58SwiftTests: XCTestCase {
       return
     }
     XCTAssertEqual(actualOutput, expectedOutput)
+  }
+
+  public func testBase58Decoding() {
+    let inputString = "tz1Y3qqTg9HdrzZGbEjiCPmwuZ7fWVxpPtRw"
+    let expectedOutputData = Data(
+      [
+        6, 161, 159, 136, 34, 110, 33, 238, 14, 79, 14, 218, 133, 13, 109, 40, 194, 236, 153, 44, 61, 157, 254
+      ]
+    )
+
+    guard let actualOutput = Base58.base58CheckDecode(inputString) else {
+      XCTFail()
+      return
+    }
+    XCTAssertEqual(actualOutput, expectedOutputData)
   }
 }
