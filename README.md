@@ -6,7 +6,7 @@
 [![Version](https://img.shields.io/cocoapods/v/Base58Swift.svg?style=flat)](http://cocoapods.org/pods/Base58Swift)
 [![License](https://img.shields.io/cocoapods/l/Base58Swift.svg?style=flat)](http://cocoapods.org/pods/Base58Swift)
 
-Base58Swift is a Swift library that implements Base58 encodings for crypto currencies. It is based off of [go-base-58](https://github.com/jbenet/go-base58).
+Base58Swift is a Swift library that implements Base58 / Base58Check encodings for cryptocurrencies. It is based off of [go-base-58](https://github.com/jbenet/go-base58) with some added functions.
 
 Donations help me find time to work on Base58Swift. If you find the library useful, please consider donating to support ongoing develoment.
 
@@ -41,13 +41,25 @@ github "keefertaylor/Base58Swift"
 
 Base58Swift provides a static utility class, `Base58`, which provides encoding and decoding functions.
 
+To encode / decode in Base58:
 ```swift
 let bytes: [UInt8] = [255, 254, 253, 252]
 
-let encodedString = Base58.encode(Data(bytes))!
-let decodedBytes = [UInt8](Base58.decode(encodedString)!)
+let encodedString = Base58.encode(bytes)!
+let decodedBytes = Base58.decode(encodedString)!
 
 print(encodedString) // 7YXVWT
+print(decodedBytes)  // [255, 254, 253, 252]
+```
+
+To encode / decode in Base58Check: 
+```swift
+let bytes: [UInt8] = [255, 254, 253, 252]
+
+let encodedString = Base58.base58CheckEncode(bytes)!
+let decodedBytes = Base58.base58CheckDecode(encodedString)!
+
+print(encodedString) // jpUz5f99p1R
 print(decodedBytes)  // [255, 254, 253, 252]
 ```
 
