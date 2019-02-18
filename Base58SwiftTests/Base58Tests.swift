@@ -4,7 +4,7 @@ import Base58Swift
 import XCTest
 
 class Base58SwiftTests: XCTestCase {
-  // Tuples of arbitrary strings that are mapped to valid Base58 encodings.
+  /// Tuples of arbitrary strings that are mapped to valid Base58 encodings.
   private let validStringDecodedToEncodedTuples = [
     ("", ""),
     (" ", "Z"),
@@ -20,7 +20,7 @@ class Base58SwiftTests: XCTestCase {
      "3sN2THZeE9Eh9eYrwkvZqNstbHGvrxSAM7gXUXvyFQP8XvQLUqNCS27icwUeDT7ckHm4FUHM2mTVh1vbLmk7y")
   ]
 
-  // Tuples of invalid strings.
+  /// Tuples of invalid strings.
   private let invalidStrings = [
     "0",
     "O",
@@ -34,10 +34,10 @@ class Base58SwiftTests: XCTestCase {
     "!@#$%^&*()-_=+~`"
   ]
 
-  public func testEncodingForValidStrings() {
+  public func testBase58EncodingForValidStrings() {
     for (decoded, encoded) in validStringDecodedToEncodedTuples {
       let bytes = [UInt8](decoded.utf8)
-      guard let result = Base58.encode(Data(bytes)) else {
+      guard let result = Base58.base58Encode(Data(bytes)) else {
         XCTFail()
         return
       }
@@ -61,5 +61,18 @@ class Base58SwiftTests: XCTestCase {
       let result = Base58.decode(invalidString)
       XCTAssertNil(result)
     }
+  }
+
+  public func testBase58Encoding() {
+    let inputData: [UInt8] = [
+      6, 161, 159, 136, 34, 110, 33, 238, 14, 79, 14, 218, 133, 13, 109, 40, 194, 236, 153, 44, 61, 157, 254
+    ]
+    let expectedOutput = "tz1Y3qqTg9HdrzZGbEjiCPmwuZ7fWVxpPtRw"
+
+    guard let actualOutput = Base58.base58CheckEncode(inputData) else {
+      XCTFail()
+      return
+    }
+    XCTAssertEqual(actualOutput, expectedOutput)
   }
 }
