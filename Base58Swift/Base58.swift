@@ -23,8 +23,7 @@ public class Base58 {
   public static func base58CheckEncode(_ bytes: [UInt8]) -> String? {
     let checksum = calculateChecksum(bytes)
     let checksummedBytes = bytes + checksum
-    let data = Data(checksummedBytes)
-    return Base58.base58Encode(data)
+    return Base58.base58Encode(checksummedBytes)
   }
 
   /**
@@ -32,7 +31,7 @@ public class Base58 {
    * - Parameter input: A base58check encoded input string to decode.
    * - Returns: Bytes representing the decoded input, or nil if decoding failed.
    */
-  public static func base58CheckDecode(_ input: String) -> Data? {
+  public static func base58CheckDecode(_ input: String) -> [UInt8]? {
     guard let decodedChecksummedBytes = base58Decode(input) else {
       return nil
     }
@@ -46,9 +45,8 @@ public class Base58 {
       return nil
     }
 
-    // TODONOT: Check checksum
     // TODONOT: migrate everythign to arrays not data.
-    return decodedBytes
+    return Array(decodedBytes)
   }
 
   /**
@@ -56,9 +54,9 @@ public class Base58 {
    * - Parameter bytes: The bytes to encode.
    * - Returns: A base58 encoded string representing the given bytes, or nil if encoding failed.
    */
-  public static func base58Encode(_ bytes: Data) -> String? {
+  public static func base58Encode(_ bytes: [UInt8]) -> String? {
     var answer: [UInt8] = []
-    var integerBytes = BigUInt(bytes)
+    var integerBytes = BigUInt(Data(bytes))
 
     while integerBytes > 0 {
       let (quotient, remainder) = integerBytes.quotientAndRemainder(dividingBy: radix)
@@ -77,7 +75,7 @@ public class Base58 {
    * - Parameter input: The base58 encoded input string to decode.
    * - Returns: Bytes representing the decoded input, or nil if decoding failed.
    */
-  public static func base58Decode(_ input: String) -> Data? {
+  public static func base58Decode(_ input: String) -> [UInt8]? {
     var answer = zero
     var i = BigUInt(1)
     let byteString = [UInt8](input.utf8)
@@ -91,7 +89,7 @@ public class Base58 {
     }
 
     let bytes = answer.serialize()
-    return byteString.prefix { i in i == alphabet[0] } + bytes
+    return Array(byteString.prefix { i in i == alphabet[0] }) + bytes
   }
 
   /**
@@ -100,7 +98,7 @@ public class Base58 {
    * - Returns: A byte array representing the checksum of the input bytes.
    */
   private static func calculateChecksum(_ input: [UInt8]) -> [UInt8] {
-    let hashedData = sha256(Data(input))
+    let hashedData = sha256(input)
     let doubleHashedData = sha256(hashedData)
     let doubleHashedArray = Array(doubleHashedData)
     return Array(doubleHashedArray.prefix(checksumLength))
@@ -111,13 +109,13 @@ public class Base58 {
    * - Parameter data: Input data to hash.
    * - Returns: A sha256 hash of the input data.
    */
-  private static func sha256(_ data: Data) -> Data {
+  private static func sha256(_ data: [UInt8]) -> [UInt8] {
     let res = NSMutableData(length: Int(CC_SHA256_DIGEST_LENGTH))!
     CC_SHA256(
-      (data as NSData).bytes,
+      (Data(data) as NSData).bytes,
       CC_LONG(data.count),
       res.mutableBytes.assumingMemoryBound(to: UInt8.self)
     )
-    return res as Data
+    return [UInt8](res as Data)
   }
 }
