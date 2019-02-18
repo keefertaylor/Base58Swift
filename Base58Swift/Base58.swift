@@ -44,8 +44,6 @@ public class Base58 {
     guard decodedChecksum.elementsEqual(calculatedChecksum, by: { $0 == $1 }) else {
       return nil
     }
-
-    // TODONOT: migrate everythign to arrays not data.
     return Array(decodedBytes)
   }
 

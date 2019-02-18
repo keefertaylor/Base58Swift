@@ -64,7 +64,6 @@ class Base58SwiftTests: XCTestCase {
   }
 
   public func testBase58CheckEncoding() {
-    // TODONOT: Refactor this to be global vars.
     let inputData: [UInt8] = [
       6, 161, 159, 136, 34, 110, 33, 238, 14, 79, 14, 218, 133, 13, 109, 40, 194, 236, 153, 44, 61, 157, 254
     ]
@@ -88,5 +87,13 @@ class Base58SwiftTests: XCTestCase {
       return
     }
     XCTAssertEqual(actualOutput, expectedOutputData)
+  }
+
+  public func testBase58CheckDecodingWithInvalidCharacters() {
+    XCTAssertNil(Base58.base58CheckDecode("0oO1lL"))
+  }
+
+  public func testBase58CheckDecodingWithInvalidChecksum() {
+    XCTAssertNil(Base58.base58CheckDecode("tz1Y3qqTg9HdrzZGbEjiCPmwuZ7fWVxpPtrW"))
   }
 }
