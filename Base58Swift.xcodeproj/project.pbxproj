@@ -12,7 +12,6 @@
 		770DFC1B2214D01700E8E70A /* BigInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770DFC1A2214D01700E8E70A /* BigInt.framework */; };
 		770DFC1E2214D3B000E8E70A /* Base58Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770DFC1D2214D3B000E8E70A /* Base58Tests.swift */; };
 		770DFC222214D73000E8E70A /* SipHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770DFC212214D73000E8E70A /* SipHash.framework */; };
-		77F4D25A221B65F700D34B01 /* Base58Check.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F4D259221B65F700D34B01 /* Base58Check.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +33,6 @@
 		770DFC1D2214D3B000E8E70A /* Base58Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base58Tests.swift; sourceTree = "<group>"; };
 		770DFC1F2214D5BE00E8E70A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		770DFC212214D73000E8E70A /* SipHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SipHash.framework; path = Carthage/Build/iOS/SipHash.framework; sourceTree = "<group>"; };
-		77F4D259221B65F700D34B01 /* Base58Check.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base58Check.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				770DFC172214CF3F00E8E70A /* Info.plist */,
-				77F4D259221B65F700D34B01 /* Base58Check.swift */,
 				770DFC132214CE5200E8E70A /* Base58.swift */,
 			);
 			path = Base58Swift;
@@ -228,7 +225,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint --strict\nelse\necho \"warning: SwiftLint not installed, run `brew install swiftlint`\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint --strict\nelse\necho \"warning: SwiftLint not installed, run `brew install swiftlint`\"\nfi\n\n";
 		};
 		770DFC162214CED000E8E70A /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -259,7 +256,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77F4D25A221B65F700D34B01 /* Base58Check.swift in Sources */,
 				770DFC142214CE5200E8E70A /* Base58.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
