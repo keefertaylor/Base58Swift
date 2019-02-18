@@ -17,6 +17,8 @@ public class Base58 {
 
   /**
    * Encode the given bytes into a Base58Check encoded string.
+   * - Parameter bytes: The bytes to encode.
+   * - Returns: A base58check encoded string representing the given bytes, or nil if encoding failed.
    */
   public static func base58CheckEncode(_ bytes: [UInt8]) -> String? {
     let checksum = calculateChecksum(bytes)
@@ -27,6 +29,8 @@ public class Base58 {
 
   /**
    * Encode the given bytes to a Base58 encoded string.
+   * - Parameter bytes: The bytes to encode.
+   * - Returns: A base58 encoded string representing the given bytes, or nil if encoding failed.
    */
   public static func base58Encode(_ bytes: Data) -> String? {
     var answer: [UInt8] = []
@@ -46,11 +50,13 @@ public class Base58 {
 
   /**
    * Decode the given base58 encoded string to bytes.
+   * - Parameter input: The base58 encoded input string to decode.
+   * - Returns: Bytes representing the decoded input, or nil if decoding failed.
    */
-  public static func decode(_ string: String) -> Data? {
+  public static func decode(_ input: String) -> Data? {
     var answer = zero
     var i = BigUInt(1)
-    let byteString = [UInt8](string.utf8)
+    let byteString = [UInt8](input.utf8)
 
     for char in byteString.reversed() {
       guard let alphabetIndex = alphabet.index(of: char) else {
@@ -66,6 +72,8 @@ public class Base58 {
 
   /**
    * Calculate a checksum for a given input by hashing twice and then taking the first four bytes.
+   * - Parameter input: The input bytes.
+   * - Returns: A byte array representing the checksum of the input bytes.
    */
   private static func calculateChecksum(_ input: [UInt8]) -> [UInt8] {
     let hashedData = sha256(Data(input))
@@ -74,7 +82,11 @@ public class Base58 {
     return Array(doubleHashedArray.prefix(checksumLength))
   }
 
-  /** Create a sha256 hash of the given data. */
+  /**
+   * Create a sha256 hash of the given data.
+   * - Parameter data: Input data to hash.
+   * - Returns: A sha256 hash of the input data.
+   */
   private static func sha256(_ data: Data) -> Data {
     let res = NSMutableData(length: Int(CC_SHA256_DIGEST_LENGTH))!
     CC_SHA256(
