@@ -31,7 +31,6 @@ public class Base58 {
     }
 
     let decodedChecksum = decodedChecksummedBytes.suffix(checksumLength)
-
     let decodedBytes = decodedChecksummedBytes.prefix(upTo: decodedChecksummedBytes.count - checksumLength)
     let calculatedChecksum = calculateChecksum([UInt8](decodedBytes))
 
