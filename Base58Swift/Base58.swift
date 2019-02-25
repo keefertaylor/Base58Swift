@@ -4,7 +4,7 @@ import BigInt
 import CommonCrypto
 import Foundation
 
-/// A static utility class which provides Base58 encoding and decoding functions.
+/// A static utility class which provides Base58 and Base58Check encoding and decoding functions.
 public class Base58 {
   /// Length of checksum appended to Base58Check encoded strings.
   private static let checksumLength = 4
