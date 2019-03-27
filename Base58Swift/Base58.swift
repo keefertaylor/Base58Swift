@@ -68,7 +68,7 @@ public enum Base58 {
     let byteString = [UInt8](input.utf8)
 
     for char in byteString.reversed() {
-      guard let alphabetIndex = alphabet.index(of: char) else {
+      guard let alphabetIndex = alphabet.firstIndex(of: char) else {
         return nil
       }
       answer += (i * BigUInt(alphabetIndex))
