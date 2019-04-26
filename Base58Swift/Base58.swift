@@ -16,7 +16,7 @@ public enum Base58 {
   /// Encode the given bytes into a Base58Check encoded string.
   /// - Parameter bytes: The bytes to encode.
   /// - Returns: A base58check encoded string representing the given bytes, or nil if encoding failed.
-  public static func base58CheckEncode(_ bytes: [UInt8]) -> String? {
+  public static func base58CheckEncode(_ bytes: [UInt8]) -> String {
     let checksum = calculateChecksum(bytes)
     let checksummedBytes = bytes + checksum
     return Base58.base58Encode(checksummedBytes)
@@ -43,7 +43,7 @@ public enum Base58 {
   /// Encode the given bytes to a Base58 encoded string.
   /// - Parameter bytes: The bytes to encode.
   /// - Returns: A base58 encoded string representing the given bytes, or nil if encoding failed.
-  public static func base58Encode(_ bytes: [UInt8]) -> String? {
+  public static func base58Encode(_ bytes: [UInt8]) -> String {
     var answer: [UInt8] = []
     var integerBytes = BigUInt(Data(bytes))
 
@@ -56,7 +56,10 @@ public enum Base58 {
     let prefix = Array(bytes.prefix { $0 == 0 }).map { _ in alphabet[0] }
     answer.insert(contentsOf: prefix, at: 0)
 
-    return String(bytes: answer, encoding: String.Encoding.utf8)
+    // swiftlint:disable force_unwrapping
+    // Force unwrap as the given alphabet will always decode to UTF8. 
+    return String(bytes: answer, encoding: String.Encoding.utf8)!
+    // swiftlint:enable force_unwrapping
   }
 
   /// Decode the given base58 encoded string to bytes.
