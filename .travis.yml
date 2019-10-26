@@ -18,12 +18,11 @@ after_deploy:
 - pod trunk push --skip-import-validation --skip-tests --allow-warnings
 script:
 - xcodegen generate
-- carthage bootstrap --platform iOS --cache-builds
-- set -o pipefail && xcodebuild test -scheme Base58Swift_iOS -destination 'platform=iOS
-  Simulator,name=iPhone XS,OS=12.2' ONLY_ACTIVE_ARCH=YES | xcpretty
+- pod lib lint
 - rm -rf Base58Swift.xcodeproj
 - xcodegen generate
-- pod lib lint
+- carthage bootstrap --platform iOS --cache-builds
+- set -o pipefail && xcodebuild test -scheme Base58Swift_iOS -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.2' ONLY_ACTIVE_ARCH=YES | xcpretty
 after_success:
 - slather
 - bash <(curl -s https://codecov.io/bash)
