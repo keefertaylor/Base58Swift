@@ -15,9 +15,11 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "8.0"
   s.osx.deployment_target = "10.10"
 
-  s.dependency "BigInt", "~> 3.1"		
-  
+  s.prepare_command = "xcodegen generate -s project.yml"
+
+  s.dependency "BigInt", "~> 3.1"
+
   s.test_spec "Tests" do |test_spec|
     test_spec.source_files = "Base58SwiftTests/*.swift"
-  end    
+  end
 end
