@@ -12,11 +12,11 @@ before_install:
 - brew outdated cocoapods || brew upgrade cocoapods
 - brew install xcodegen
 - xcodegen generate
+- carthage bootstrap --platform iOS --cache-builds
 #- which xcodegen
-#- pod lib lint
 - rm -rf Base58Swift.xcodeproj
 - xcodegen generate
-- carthage bootstrap --platform iOS --cache-builds
+#- pod lib lint
 before_deploy:
 - carthage build --no-skip-current --platform iOS --cache-builds
 - carthage archive $FRAMEWORK_NAME
