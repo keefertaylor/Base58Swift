@@ -16,7 +16,7 @@ before_install:
 #- which xcodegen
 - rm -rf Base58Swift.xcodeproj
 - xcodegen generate
-#- pod lib lint
+- pod lib lint
 before_deploy:
 - carthage build --no-skip-current --platform iOS --cache-builds
 - carthage archive $FRAMEWORK_NAME
