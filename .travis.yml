@@ -9,7 +9,7 @@ before_install:
 - gem install slather
 - brew update
 - brew outdated carthage || brew upgrade carthage
-#- brew outdated cocoapods || brew upgrade cocoapods
+- brew outdated cocoapods || brew upgrade cocoapods
 - brew install xcodegen
 - xcodegen generate
 #- which xcodegen
