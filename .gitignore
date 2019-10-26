@@ -1,5 +1,7 @@
  Created by http://www.gitignore.io
 
+*.xcodeproj
+
 ### OSX ###
 .DS_Store
 .AppleDouble
