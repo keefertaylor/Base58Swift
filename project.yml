@@ -10,7 +10,7 @@ targets:
     sources: [Base58Swift]
     scheme:
       testTargets:
-        - Base58Swift_$platform
+        - Base58SwiftTests_$platform
       gatherCoverageData: true
     postCompileScripts:
       - script: swiftlint autocorrect --config .swiftlint.yml
