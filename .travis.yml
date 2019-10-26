@@ -13,7 +13,6 @@ before_install:
 - brew install xcodegen
 - xcodegen generate
 - carthage bootstrap --platform iOS --cache-builds
-#- which xcodegen
 - rm -rf Base58Swift.xcodeproj
 - xcodegen generate
 - pod lib lint
