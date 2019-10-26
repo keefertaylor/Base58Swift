@@ -11,19 +11,19 @@ before_install:
 - brew outdated carthage || brew upgrade carthage
 - brew outdated cocoapods || brew upgrade cocoapods
 - brew install xcodegen
-- xcodegen generate
-- carthage bootstrap --platform iOS --cache-builds
-- rm -rf Base58Swift.xcodeproj
-- xcodegen generate
-- pod lib lint
 before_deploy:
 - carthage build --no-skip-current --platform iOS --cache-builds
 - carthage archive $FRAMEWORK_NAME
 after_deploy:
 - pod trunk push --skip-import-validation --skip-tests --allow-warnings
 script:
+- xcodegen generate
+- carthage bootstrap --platform iOS --cache-builds
 - set -o pipefail && xcodebuild test -scheme Base58Swift_iOS -destination 'platform=iOS
   Simulator,name=iPhone XS,OS=12.2' ONLY_ACTIVE_ARCH=YES | xcpretty
+- rm -rf Base58Swift.xcodeproj
+- xcodegen generate
+- pod lib lint
 after_success:
 - slather
 - bash <(curl -s https://codecov.io/bash)
