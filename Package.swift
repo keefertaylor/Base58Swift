@@ -9,12 +9,12 @@ let package = Package(
             targets: ["Base58Swift"]),
     ],
     dependencies: [
-      .package(url: "https://github.com/attaswift/BigInt.git", from: "3.1.0")
+///      .package(url: "https://github.com/attaswift/BigInt.git", from: "3.1.0")
     ],
     targets: [
         .target(
             name: "Base58Swift",
-            dependencies: ["BigInt"],
+  ///          dependencies: ["BigInt"],
             path: "Base58Swift"),
         .testTarget(
             name: "base58swiftTests",
