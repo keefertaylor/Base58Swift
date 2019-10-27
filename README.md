@@ -1,4 +1,4 @@
-# Base58Swift 
+# Base58Swift
 
 [![Build Status](https://travis-ci.org/keefertaylor/Base58Swift.svg?branch=master)](https://travis-ci.org/keefertaylor/Base58Swift)
 [![codecov](https://codecov.io/gh/keefertaylor/Base58Swift/branch/master/graph/badge.svg)](https://codecov.io/gh/keefertaylor/Base58Swift)
@@ -52,7 +52,7 @@ print(encodedString) // 7YXVWT
 print(decodedBytes)  // [255, 254, 253, 252]
 ```
 
-To encode / decode in Base58Check: 
+To encode / decode in Base58Check:
 ```swift
 let bytes: [UInt8] = [255, 254, 253, 252]
 
@@ -65,7 +65,14 @@ print(decodedBytes)  // [255, 254, 253, 252]
 
 ## Contributing
 
-I am happy to accept pull requests. 
+I am happy to accept pull requests.
+
+To get set up:
+```shell
+$ brew install xcodegen # if you don't already have it
+$ xcodegen generate # Generate an XCode project from Project.yml
+$ open Base58Swift.xcodeproj 
+```
 
 ## License
 
