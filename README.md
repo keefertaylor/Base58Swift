@@ -73,6 +73,16 @@ print(decodedBytes)  // [255, 254, 253, 252]
 ## Contributing
 
 I am happy to accept pull requests.
+<<<<<<< HEAD
+=======
+
+To get set up:
+```shell
+$ brew install xcodegen # if you don't already have it
+$ xcodegen generate # Generate an XCode project from Project.yml
+$ open Base58Swift.xcodeproj 
+```
+>>>>>>> master
 
 ## License
 

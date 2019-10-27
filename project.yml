@@ -1,0 +1,26 @@
+name: Base58Swift
+options:
+  bundleIdPrefix: com.keefertaylor
+settings:
+  LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(PROJECT_DIR)/Carthage/Build/iOS"
+targets:
+  Base58Swift:
+    type: framework
+    platform: [iOS, macOS]
+    sources: [Base58Swift]
+    scheme:
+      testTargets:
+        - Base58SwiftTests_$platform
+      gatherCoverageData: true
+    postCompileScripts:
+      - script: swiftlint autocorrect --config .swiftlint.yml
+        name: SwiftLint
+    dependencies:
+      - carthage: BigInt
+      - carthage: SipHash
+  Base58SwiftTests:
+    type: bundle.unit-test
+    platform: [iOS, macOS]
+    sources: [Base58SwiftTests]
+    dependencies:
+      - target: Base58Swift_$platform
