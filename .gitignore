@@ -1,5 +1,12 @@
  Created by http://www.gitignore.io
 
+### SwiftPackageManager ###
+Packages
+.build/
+xcuserdata
+DerivedData/
+*.xcodeproj
+
 ### OSX ###
 .DS_Store
 .AppleDouble
