@@ -18,9 +18,8 @@ Donations help me find time to work on Base58Swift. If you find the library usef
 
 
 ## Installation
-
 ### CocoaPods
-Base58Swift supports installation via CocoaPods. You can depened on Base58Swift by adding the following to your Podfile:
+Base58Swift supports installation via CocoaPods. You can depend on Base58Swift by adding the following to your Podfile:
 
 ```
 pod "Base58Swift"
@@ -36,6 +35,14 @@ github "keefertaylor/Base58Swift"
 ```
 
  If you use Carthage to build your dependencies, make sure you have added `BigInt.framework` and `SipHash.framework`, to the "_Linked Frameworks and Libraries_" section of your target, and have included them in your Carthage framework copying build phase.
+
+### Swift Package Manager
+
+Add the following to the `dependencies` section of your `Package.swift` file:
+
+```swift
+.package(url: "https://github.com/keefertaylor/Base58Swift.git", from: "2.1.0")
+```
 
 ## Usage
 
@@ -71,7 +78,7 @@ To get set up:
 ```shell
 $ brew install xcodegen # if you don't already have it
 $ xcodegen generate # Generate an XCode project from Project.yml
-$ open Base58Swift.xcodeproj 
+$ open Base58Swift.xcodeproj
 ```
 
 ## License

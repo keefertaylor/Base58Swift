@@ -1,5 +1,10 @@
  Created by http://www.gitignore.io
 
+### SwiftPackageManager ###
+Packages
+.build/
+xcuserdata
+DerivedData/
 *.xcodeproj
 
 ### OSX ###

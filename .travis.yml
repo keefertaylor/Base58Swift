@@ -17,10 +17,14 @@ before_deploy:
 after_deploy:
 - pod trunk push --skip-import-validation --skip-tests --allow-warnings
 script:
+# Swift Package Manager
+- swift test
+# CocoaPods
 - xcodegen generate
 - pod lib lint
 - rm -rf Base58Swift.xcodeproj
 - xcodegen generate
+# Carthage
 - carthage bootstrap --platform iOS --cache-builds
 - set -o pipefail && xcodebuild test -scheme Base58Swift_iOS -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.2' ONLY_ACTIVE_ARCH=YES | xcpretty
 after_success:
