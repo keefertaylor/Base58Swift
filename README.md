@@ -1,4 +1,4 @@
-# Base58Swift 
+# Base58Swift
 
 [![Build Status](https://travis-ci.org/keefertaylor/Base58Swift.svg?branch=master)](https://travis-ci.org/keefertaylor/Base58Swift)
 [![codecov](https://codecov.io/gh/keefertaylor/Base58Swift/branch/master/graph/badge.svg)](https://codecov.io/gh/keefertaylor/Base58Swift)
@@ -18,9 +18,8 @@ Donations help me find time to work on Base58Swift. If you find the library usef
 
 
 ## Installation
-
 ### CocoaPods
-Base58Swift supports installation via CocoaPods. You can depened on Base58Swift by adding the following to your Podfile:
+Base58Swift supports installation via CocoaPods. You can depend on Base58Swift by adding the following to your Podfile:
 
 ```
 pod "Base58Swift"
@@ -37,6 +36,14 @@ github "keefertaylor/Base58Swift"
 
  If you use Carthage to build your dependencies, make sure you have added `BigInt.framework` and `SipHash.framework`, to the "_Linked Frameworks and Libraries_" section of your target, and have included them in your Carthage framework copying build phase.
 
+### Swift Package Manager
+
+Add the following to the `dependencies` section of your `Package.swift` file:
+
+```swift
+.package(url: "https://github.com/keefertaylor/Base58Swift.git", from: "2.1.0")
+```
+
 ## Usage
 
 Base58Swift provides a static utility class, `Base58`, which provides encoding and decoding functions.
@@ -52,7 +59,7 @@ print(encodedString) // 7YXVWT
 print(decodedBytes)  // [255, 254, 253, 252]
 ```
 
-To encode / decode in Base58Check: 
+To encode / decode in Base58Check:
 ```swift
 let bytes: [UInt8] = [255, 254, 253, 252]
 
@@ -65,7 +72,7 @@ print(decodedBytes)  // [255, 254, 253, 252]
 
 ## Contributing
 
-I am happy to accept pull requests. 
+I am happy to accept pull requests.
 
 ## License
 
