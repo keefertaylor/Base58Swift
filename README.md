@@ -34,7 +34,7 @@ Base58Swift to your `Cartfile`:
 github "keefertaylor/Base58Swift"
 ```
 
- If you use Carthage to build your dependencies, make sure you have added `BigInt.framework` and `SipHash.framework`, to the "_Linked Frameworks and Libraries_" section of your target, and have included them in your Carthage framework copying build phase.
+If you use Carthage to build your dependencies, make sure you have added `BigInt.framework` and `SipHash.framework`, to the "_Linked Frameworks and Libraries_" section of your target, and have included them in your Carthage framework copying build phase.
 
 ### Swift Package Manager
 
@@ -72,7 +72,7 @@ print(decodedBytes)  // [255, 254, 253, 252]
 
 ## Contributing
 
-I am happy to accept pull requests.
+Pull requests are welcome.
 
 To get set up:
 ```shell
