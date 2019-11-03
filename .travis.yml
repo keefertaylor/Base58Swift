@@ -13,7 +13,7 @@ before_install:
 jobs:
   include:
     - stage: Build - Swift Package Manager
-      script: 
+      script:
         - swift test
     - stage: Build - CocoaPods
       script:
@@ -23,7 +23,7 @@ jobs:
       script:
         - brew outdated carthage || brew upgrade carthage
         - brew install xcodegen
-        - gem install slather       
+        - gem install slather
         - xcodegen generate
         - travis_wait 500 carthage bootstrap --platform iOS --no-use-binaries --verbose
         - set -o pipefail && xcodebuild test -scheme Base58Swift_iOS -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.2' ONLY_ACTIVE_ARCH=YES | xcpretty
@@ -31,15 +31,18 @@ jobs:
         - bash <(curl -s https://codecov.io/bash)
     - stage: Release - CocoaPods
       script:
-        - echo "Building CocoaPods Release If Tag is Present"    
+        - echo "Building CocoaPods Release If Tag is Present"
       before_deploy:
         - pod trunk push --skip-import-validation --skip-tests --allow-warnings
     - stage: Release - Carthage
       script:
         - echo "Building Carthage Release If Tag is Present"
       before_deploy:
-        - carthage build --no-skip-current --platform iOS --cache-builds
-        - carthage archive $FRAMEWORK_NAME        
+        - brew outdated carthage || brew upgrade carthage
+        - brew install xcodegen
+        - xcodegen generate
+        - carthage build --no-skip-current --platform iOS,mac --cache-builds
+        - carthage archive $FRAMEWORK_NAME
       deploy:
         provider: releases
         api_key:
@@ -49,4 +52,3 @@ jobs:
         on:
           repo: keefertaylor/Base58Swift
           tags: true
-

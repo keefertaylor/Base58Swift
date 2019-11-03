@@ -6,7 +6,7 @@ let package = Package(
     products: [
         .library(
             name: "Base58Swift",
-            targets: ["Base58Swift"]),
+            targets: ["Base58Swift"])
     ],
     dependencies: [
       .package(url: "https://github.com/attaswift/BigInt.git", from: "3.1.0")
@@ -19,6 +19,6 @@ let package = Package(
         .testTarget(
             name: "base58swiftTests",
             dependencies: ["Base58Swift"],
-            path: "Base58SwiftTests"),
+            path: "Base58SwiftTests")
     ]
 )
