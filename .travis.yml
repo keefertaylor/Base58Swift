@@ -29,15 +29,17 @@ jobs:
         - set -o pipefail && xcodebuild test -scheme Base58Swift_iOS -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.2' ONLY_ACTIVE_ARCH=YES | xcpretty
         - slather
         - bash <(curl -s https://codecov.io/bash)
-    - stage: Release - CocoaPods
-      script:
-        - echo "Building CocoaPods Release If Tag is Present"
-      before_deploy:
-        - pod trunk push --skip-import-validation --skip-tests --allow-warnings
-    - stage: Release - Carthage
+    - stage: Build and Push Release if tagged commit
       script:
         - echo "Building Carthage Release If Tag is Present"
       before_deploy:
+        - echo "Found tagged release"
+
+        - echo "Deploying CocoaPods"
+        - brew outdated cocoapods || brew upgrade cocoapods
+        - pod trunk push --skip-import-validation --skip-tests --allow-warnings
+
+        - echo "Deploying Carthage"
         - brew outdated carthage || brew upgrade carthage
         - brew install xcodegen
         - xcodegen generate
