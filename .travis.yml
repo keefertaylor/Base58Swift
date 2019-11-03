@@ -30,9 +30,13 @@ jobs:
         - slather
         - bash <(curl -s https://codecov.io/bash)
     - stage: Release - CocoaPods
+      script:
+        - echo "Building CocoaPods Release If Tag is Present"    
       before_deploy:
         - pod trunk push --skip-import-validation --skip-tests --allow-warnings
     - stage: Release - Carthage
+      script:
+        - echo "Building Carthage Release If Tag is Present"
       before_deploy:
         - carthage build --no-skip-current --platform iOS --cache-builds
         - carthage archive $FRAMEWORK_NAME        
