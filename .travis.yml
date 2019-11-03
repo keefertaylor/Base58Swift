@@ -12,20 +12,23 @@ before_install:
 
 jobs:
   include:
+    - stage: Build - Swift Package Manager
+      script:
+        - swift test
     - stage: Build - CocoaPods
       install:
-        - brew outdated cocoapods || brew upgrade cocoapods      
+        - brew outdated cocoapods || brew upgrade cocoapods
       script:
         - pod lib lint
     - stage: Build - Carthage And Code Coverage
       install:
-        - brew outdated carthage || brew upgrade carthage      
+        - brew outdated carthage || brew upgrade carthage
         - brew install xcodegen
-        - gem install slather        
+        - gem install slather
       script:
         # Carthage requires that XCode project files are checked in. Project.yml is
         # the canonical definition for the .xcodeproj file. Remove the .xcodeproj file
-        # and regenerate it. 
+        # and regenerate it.
         # See: https://github.com/Carthage/Carthage/issues/2684
         - rm -rf Base58Swift.xcodeproj
         - xcodegen generate
@@ -33,7 +36,7 @@ jobs:
         # Build with Carthage
         - travis_wait 500 carthage bootstrap --platform iOS --no-use-binaries --verbose
         - set -o pipefail && xcodebuild test -scheme Base58Swift_iOS -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.2' ONLY_ACTIVE_ARCH=YES | xcpretty
-        
+
         # Generate and Upload Code Coverage
         - slather
         - bash <(curl -s https://codecov.io/bash)
@@ -53,11 +56,11 @@ jobs:
 
         # Carthage requires that XCode project files are checked in. Project.yml is
         # the canonical definition for the .xcodeproj file. Remove the .xcodeproj file
-        # and regenerate it. 
+        # and regenerate it.
         # See: https://github.com/Carthage/Carthage/issues/2684
         - rm -rf Base58Swift.xcodeproj
         - xcodegen generate
-        
+
         - carthage build --no-skip-current --platform iOS,mac --cache-builds
         - carthage archive $FRAMEWORK_NAME
       deploy:
