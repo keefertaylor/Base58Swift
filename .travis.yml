@@ -21,6 +21,7 @@ jobs:
       script:
         - brew install xcodegen
         - mv ./Base58Swift.xcodeproj ./Base58Swift_artifact.xcodeproj
+        - xcodegen generate
         - diff ./Base58Swift.xcodeproj ./Base58Swift_artifact.xcodeproj
     - stage: Build - Swift Package Manager
       script:
