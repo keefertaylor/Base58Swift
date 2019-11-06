@@ -7,6 +7,8 @@ targets:
   Base58Swift:
     type: framework
     platform: [iOS, macOS]
+    deploymentTarget:
+      iOS: 10.0
     sources: [Base58Swift]
     scheme:
       testTargets:
