@@ -19,7 +19,7 @@ jobs:
       install:
         - brew outdated cocoapods || brew upgrade cocoapods
       script:
-        - pod lib lint
+        - travis_wait 500 pod lib lint
     - stage: Build - Carthage And Code Coverage
       install:
         - brew outdated carthage || brew upgrade carthage
@@ -34,8 +34,9 @@ jobs:
         - xcodegen generate
 
         # Build with Carthage
-        - travis_wait 500 carthage bootstrap --platform iOS --no-use-binaries --verbose
+        - travis_wait 500 carthage bootstrap --platform iOS,mac --no-use-binaries --verbose
         - set -o pipefail && xcodebuild test -scheme Base58Swift_iOS -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.2' ONLY_ACTIVE_ARCH=YES | xcpretty
+        - set -o pipefail && xcodebuild test -scheme Base58Swift_macOS -destination 'platform=macOS,arch=x86_64' ONLY_ACTIVE_ARCH=YES | xcpretty
 
         # Generate and Upload Code Coverage
         - slather
@@ -49,26 +50,3 @@ jobs:
         - echo "Deploying CocoaPods"
         - brew outdated cocoapods || brew upgrade cocoapods
         - pod trunk push --skip-import-validation --skip-tests --allow-warnings
-
-        - echo "Deploying Carthage"
-        - brew outdated carthage || brew upgrade carthage
-        - brew install xcodegen
-
-        # Carthage requires that XCode project files are checked in. Project.yml is
-        # the canonical definition for the .xcodeproj file. Remove the .xcodeproj file
-        # and regenerate it.
-        # See: https://github.com/Carthage/Carthage/issues/2684
-        - rm -rf Base58Swift.xcodeproj
-        - xcodegen generate
-
-        - carthage build --no-skip-current --platform iOS,mac --cache-builds
-        - carthage archive $FRAMEWORK_NAME
-      deploy:
-        provider: releases
-        api_key:
-          secure: MWmyQzv+FpXYJ6xapvcGv+TS0RI12uwQsFb0ncEMT6Aq4aGMrR6R2ZCdumB8rvaWk6wS5R4UtBF4f2EkHKuuVsn14A4ru9GJ7spupjFRDsHQQwP3s8NTBeSd6dMGb2KRa2ougEQtpbftiI7CqE5bVTBbOXsfekIwcTHm9m3Q3RhbayMNG4J42EdbCNLFicXo0ROYEMWfsmtKk+M2jboDw7E8UqiCgbqA75hRGOvqXqYXkd2dylgaoqGqXV1D994W5g+Iz2OJuswVXAxaFg4F0B0hFk9N52Xj2m0sxymfS7he/yiU/cOgxbzmMAh2mxwVDDQAg/uCVBCL1f8rjq/KAVyPsJYjvdDEADQ7oholCtwKj6QiLwuv7KOAnC4t9ud2qNjQaLIJD1jrtMxzHpCLpyoLMoZT0F7Ms5GwG/PC99Lo9QNpySX+qWLVZ0GOXLq6FF2bpF9SjJGVZiBFyyzXjJdNmAdfIE7daR4GqnMNTFjNm08nbGrFZWeVTN3MGo1i5No+s+Bc2yGIBhC4eGT8iW9sSixeR72nfpc718O00sIMAP69+r4YTTuvGL96i1Pn/fCMJNc2C18KRD8kv/tzpfCHSA66MIJ+OcDtnV93foYp6LfD4Ouyf5ZdTVw/65T9vtTRxeX+0uJJ8EY6UC9i19gDzSaowFMobGdH6e4fhF0=
-        file: "$FRAMEWORK_NAME.framework.zip"
-        skip_cleanup: true
-        on:
-          repo: keefertaylor/Base58Swift
-          tags: true
