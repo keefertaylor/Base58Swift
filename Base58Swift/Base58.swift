@@ -4,8 +4,6 @@ import BigInt
 import CommonCrypto
 import Foundation
 
-DOES NOT COMPILE
-
 /// A static utility class which provides Base58 encoding and decoding functionality.
 public enum Base58 {
   /// Length of checksum appended to Base58Check encoded strings.
