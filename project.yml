@@ -12,7 +12,7 @@ targets:
     sources: [Base58Swift]
     scheme:
       testTargets:
-        - Base58SwiftTests_$platform
+        - Base58SwiftTests_${platform}
       gatherCoverageData: true
     postCompileScripts:
       - script: swiftlint autocorrect --config .swiftlint.yml
@@ -25,4 +25,4 @@ targets:
     platform: [iOS, macOS]
     sources: [Base58SwiftTests]
     dependencies:
-      - target: Base58Swift_$platform
+      - target: Base58Swift_${platform}
