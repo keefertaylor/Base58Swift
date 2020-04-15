@@ -77,12 +77,12 @@
 		51EF5B6E683B82620590F3AD /* Base58.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base58.swift; sourceTree = "<group>"; };
 		6CD77D1BE5D2AE478714D545 /* SipHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SipHash.framework; sourceTree = "<group>"; };
 		AAA548395120FE2402DA48FB /* Base58SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Base58SwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C07CFC244A7B03A4CC5C3D2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C07CFC244A7B03A4CC5C3D2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CE269206C148FADF6BF500A6 /* BigInt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BigInt.framework; sourceTree = "<group>"; };
 		DCF47794ED0F93AB7D49C9A7 /* Base58SwiftTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = Base58SwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0FE375CAF81D15BA90E113B /* Base58Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Base58Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E59E287740D294E84DCF4580 /* BigInt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BigInt.framework; sourceTree = "<group>"; };
-		FB6AA61A3436FAF13DC31B92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB6AA61A3436FAF13DC31B92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FC5D5694FA28B3CF29CDCA11 /* Base58Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Base58Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -279,13 +279,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1020;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 96988A46702FDFE010B86F64 /* Build configuration list for PBXProject "Base58Swift" */;
 			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				Base,
 				en,
 			);
 			mainGroup = 1837F4FBB1B749FE425C0DD6;
@@ -706,7 +707,7 @@
 				15C037A95A4C7648FE1E5BC5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "";
+			defaultConfigurationName = Debug;
 		};
 		3CC931D3193A837B20D46BC3 /* Build configuration list for PBXNativeTarget "Base58Swift_macOS" */ = {
 			isa = XCConfigurationList;
@@ -715,7 +716,7 @@
 				83A1925C155627AF96ED8EC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "";
+			defaultConfigurationName = Debug;
 		};
 		90F642E510E744A1C78F0B0A /* Build configuration list for PBXNativeTarget "Base58SwiftTests_macOS" */ = {
 			isa = XCConfigurationList;
@@ -724,7 +725,7 @@
 				940EA803E420517045CC5A48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "";
+			defaultConfigurationName = Debug;
 		};
 		96988A46702FDFE010B86F64 /* Build configuration list for PBXProject "Base58Swift" */ = {
 			isa = XCConfigurationList;
@@ -742,7 +743,7 @@
 				0FA4A3F4D01626A0BF458AD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "";
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
