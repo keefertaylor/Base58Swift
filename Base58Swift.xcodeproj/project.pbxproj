@@ -7,15 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		195B8674C525FC927DA0061B /* SipHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CD77D1BE5D2AE478714D545 /* SipHash.framework */; };
-		24A562C2A2514DC514907440 /* SipHash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4576115A8EB92FEF91A1F130 /* SipHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2B2B1789E887A630326219CC /* Base58.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EF5B6E683B82620590F3AD /* Base58.swift */; };
 		66B96B37A456293E57DED690 /* BigInt.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE269206C148FADF6BF500A6 /* BigInt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		68ECD9A721F5D09F0749AE42 /* Base58Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC5D5694FA28B3CF29CDCA11 /* Base58Swift.framework */; };
-		6D51A30CECF4D275D160F81F /* SipHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4576115A8EB92FEF91A1F130 /* SipHash.framework */; };
 		6F7CBD76D9A8AE61157D2886 /* Base58.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EF5B6E683B82620590F3AD /* Base58.swift */; };
 		7298F6648C159B94417741E7 /* Base58Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C44B5ABFF15EC45F22CDAD /* Base58Tests.swift */; };
-		A67B14E677B340BB289C1C51 /* SipHash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6CD77D1BE5D2AE478714D545 /* SipHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B0232B95BF642225E870D36E /* BigInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE269206C148FADF6BF500A6 /* BigInt.framework */; };
 		B83506B723681742A8D07872 /* Base58Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C44B5ABFF15EC45F22CDAD /* Base58Tests.swift */; };
 		BFEC1554799B24B556ACD794 /* Base58Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0FE375CAF81D15BA90E113B /* Base58Swift.framework */; };
@@ -51,7 +47,6 @@
 			files = (
 				E6FA113E1AE9AC8F95D397E9 /* Base58Swift.framework in Embed Frameworks */,
 				66B96B37A456293E57DED690 /* BigInt.framework in Embed Frameworks */,
-				A67B14E677B340BB289C1C51 /* SipHash.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,7 +59,6 @@
 			files = (
 				FA41C17B8662B5C0AEA7E097 /* Base58Swift.framework in Embed Frameworks */,
 				CC9E7EC879AD738B5E7EF12B /* BigInt.framework in Embed Frameworks */,
-				24A562C2A2514DC514907440 /* SipHash.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,9 +67,7 @@
 
 /* Begin PBXFileReference section */
 		24C44B5ABFF15EC45F22CDAD /* Base58Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base58Tests.swift; sourceTree = "<group>"; };
-		4576115A8EB92FEF91A1F130 /* SipHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SipHash.framework; sourceTree = "<group>"; };
 		51EF5B6E683B82620590F3AD /* Base58.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base58.swift; sourceTree = "<group>"; };
-		6CD77D1BE5D2AE478714D545 /* SipHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SipHash.framework; sourceTree = "<group>"; };
 		AAA548395120FE2402DA48FB /* Base58SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Base58SwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C07CFC244A7B03A4CC5C3D2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CE269206C148FADF6BF500A6 /* BigInt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BigInt.framework; sourceTree = "<group>"; };
@@ -100,7 +92,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0232B95BF642225E870D36E /* BigInt.framework in Frameworks */,
-				195B8674C525FC927DA0061B /* SipHash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +108,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD08468EE971322521114B0D /* BigInt.framework in Frameworks */,
-				6D51A30CECF4D275D160F81F /* SipHash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				CE269206C148FADF6BF500A6 /* BigInt.framework */,
-				6CD77D1BE5D2AE478714D545 /* SipHash.framework */,
 			);
 			path = Mac;
 			sourceTree = "<group>";
@@ -186,7 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				E59E287740D294E84DCF4580 /* BigInt.framework */,
-				4576115A8EB92FEF91A1F130 /* SipHash.framework */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
