@@ -19,7 +19,6 @@ targets:
         name: SwiftLint
     dependencies:
       - carthage: BigInt
-      - carthage: SipHash
   Base58SwiftTests:
     type: bundle.unit-test
     platform: [iOS, macOS]
