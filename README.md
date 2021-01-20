@@ -8,15 +8,6 @@
 
 Base58Swift is a Swift library that implements Base58 / Base58Check encodings for cryptocurrencies. It is based off of [go-base-58](https://github.com/jbenet/go-base58) with some added functions.
 
-Donations help me find time to work on Base58Swift. If you find the library useful, please consider donating to support ongoing develoment.
-
-|Currency| Address |
-|---------|---|
-| __Tezos__ | tz1SNXT8yZCwTss2YcoFi3qbXvTZiCojx833 |
-| __Bitcoin__ | 1CdPoF9cvw3YEiuRCHxdsGpvb5tSUYBBo |
-| __Bitcoin Cash__ | qqpr9are9gzs5r0q7hy3gdehj3w074pyqsrhpdmxg6 |
-
-
 ## Installation
 ### CocoaPods
 Base58Swift supports installation via CocoaPods. You can depend on Base58Swift by adding the following to your Podfile:
