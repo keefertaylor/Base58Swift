@@ -79,7 +79,10 @@ public enum Base58 {
     }
 
     let bytes = answer.serialize()
-    return Array(byteString.prefix { i in i == alphabet[0] }) + bytes
+    // For every leading one on the input we need to add a leading 0 on the output
+    let leadingOnes = byteString.prefix(while: { value in value == alphabet[0]})
+    let leadingZeros: [UInt8] = Array(repeating: 0, count: leadingOnes.count)
+    return leadingZeros + bytes
   }
 
   /// Calculate a checksum for a given input by hashing twice and then taking the first four bytes.

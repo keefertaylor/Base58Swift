@@ -82,6 +82,32 @@ class Base58SwiftTests: XCTestCase {
     XCTAssertEqual(actualOutput, expectedOutputData)
   }
 
+  public func testBase58CheckDecodingLeadingOne() {
+    let inputString = "1CdPoF9cvw3YEiuRCHxdsGpvb5tSUYBBo"
+    let expectedOutputData: [UInt8] = [
+      0, 2, 50, 244, 121, 42, 5, 10, 13, 224, 245, 201, 20, 55, 55, 148, 92, 255, 84, 36, 4
+    ]
+    guard let actualOutput = Base58.base58CheckDecode(inputString) else {
+      XCTFail()
+      return
+    }
+    XCTAssertEqual(actualOutput, expectedOutputData)
+    
+  }
+    
+  public func testDecodeLeadingOnes() {
+    let inputString = "11111111111111111111111111111111"
+    let expectedOutputData: [UInt8] = [
+      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+    ]
+    
+    guard let actualOutput = Base58.base58Decode(inputString) else {
+      XCTFail()
+      return
+    }
+    XCTAssertEqual(actualOutput, expectedOutputData)
+  }
+
   public func testBase58CheckDecodingWithInvalidCharacters() {
     XCTAssertNil(Base58.base58CheckDecode("0oO1lL"))
   }
