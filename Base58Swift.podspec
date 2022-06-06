@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "8.0"
   s.osx.deployment_target = "10.10"
 
-  s.dependency "BigInt", "~> 5.0.0"
+  s.dependency "BigInt", "~> 5.2.0"
 
   s.test_spec "Tests" do |test_spec|
     test_spec.source_files = "Base58SwiftTests/*.swift"
