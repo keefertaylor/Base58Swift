@@ -1,8 +1,8 @@
 // Copyright Keefer Taylor, 2019.
 
 import BigInt
-import CommonCrypto
 import Foundation
+import Crypto
 
 /// A static utility class which provides Base58 encoding and decoding functionality.
 public enum Base58 {
@@ -96,12 +96,6 @@ public enum Base58 {
   /// - Parameter data: Input data to hash.
   /// - Returns: A sha256 hash of the input data.
   private static func sha256(_ data: [UInt8]) -> [UInt8] {
-    let res = NSMutableData(length: Int(CC_SHA256_DIGEST_LENGTH))!
-    CC_SHA256(
-      (Data(data) as NSData).bytes,
-      CC_LONG(data.count),
-      res.mutableBytes.assumingMemoryBound(to: UInt8.self)
-    )
-    return [UInt8](res as Data)
+    Array(SHA256.hash(data: Data(data)))
   }
 }
