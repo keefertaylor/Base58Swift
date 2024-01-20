@@ -2,7 +2,7 @@
 
 import BigInt
 import Foundation
-import CryptoKit
+import Crypto
 
 /// A static utility class which provides Base58 encoding and decoding functionality.
 public enum Base58 {
